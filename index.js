@@ -24,8 +24,8 @@ bot.on('text', (ctx) => {
   });
 
   ctx.replyWithPhoto(
-    { source: 'https://ae01.alicdn.com/kf/S3e6e4d5a07894b9c840c15defc65c71cJ/Windbreaker-Men-Tactical-Jacket-Waterproof-Outdoor-Hooded-Coat-Sports-Military-European-Size-S-3xl-Field-Climbing.jpg' },
     {
+      photo: 'https://ae01.alicdn.com/kf/S3e6e4d5a07894b9c840c15defc65c71cJ/Windbreaker-Men-Tactical-Jacket-Waterproof-Outdoor-Hooded-Coat-Sports-Military-European-Size-S-3xl-Field-Climbing.jpg',
       caption: 'This is an example of an image with text and buttons.',
       reply_markup: {
         inline_keyboard: [
