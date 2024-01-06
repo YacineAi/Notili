@@ -21,13 +21,14 @@ bot.on('text', (ctx) => {
       console.log("coinPi : ", coinPi)
       ctx.deleteMessage(message.message_id)
       .then(() => {
-        ctx.replyWithPhoto({ url: "https://picsum.photos/200/300/?random" },
+        ctx.replyWithPhoto({ url: coinPi.info.normal.image },
+          // coinPi.info.limited.price
         {
-          caption: "This is a simple URL: https://www.npmjs.com/\nThis is a URL that is displayed as a word: [npm](https://www.npmjs.com/package/telegraf)",
+          caption: `------ « تخفيض الاسعار 🎉 » ------\n Name\n الشحن : ${coinPi.info.normal.name}\n إسم المتجر : ${coinPi.info.normal.store}\n تقييم المتجر : ${coinPi.info.normal.storeRate}\n ----- | ✨ التخفيضات ✨ | -----\n السعر الاصلي :\n ${coinPi.info.normal.discountPrice}\n تخفيض العملات :\n ${coinPi.info.points.discount}\n تخفيض السوبر :\n ${coinPi.info.super.price}\n تخفيض العرض المحدود : ${coinPi.info.limited.price}`,
           parse_mode: "Markdown",
           ...Markup.inlineKeyboard([
-            Markup.button.callback("Plain", "plain"),
-            Markup.button.url("Italic", "https://www.npmjs.com/"),
+            Markup.button.callback("زر عادي", "plain"),
+            Markup.button.url("زر رابط", "https://www.npmjs.com/"),
           ])
         });
       })

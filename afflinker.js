@@ -54,7 +54,7 @@ const getData = async (id) => {
         //const res = await axios.post(API_URL, new URLSearchParams(allParams));
         const requests = [
             axios.post(API_URL, new URLSearchParams(allParams)),
-            axios.get(`https://coinzy-u0g3.onrender.com/detail?id=${id}`),
+            axios.get(`https://coinzy-u0g3.onrender.com/fetch?id=${id}`),
         ];
         const responses = await Promise.all(requests);
         //console.log(res.data.aliexpress_affiliate_link_generate_response.resp_result.result.promotion_links);
