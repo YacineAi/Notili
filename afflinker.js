@@ -57,6 +57,7 @@ const getData = async (id) => {
             axios.get(`https://coinzy-u0g3.onrender.com/fetch?id=${id}`),
         ];
         const responses = await Promise.all(requests);
+        // res.data.aliexpress_affiliate_link_generate_response.resp_result.result.promotion_links.promotion_link[0].promotion_link
         //console.log(res.data.aliexpress_affiliate_link_generate_response.resp_result.result.promotion_links);
         const affRes = {};
         responses.forEach((response, index) => {

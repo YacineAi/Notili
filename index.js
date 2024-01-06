@@ -22,9 +22,10 @@ bot.on('text', (ctx) => {
       ctx.deleteMessage(message.message_id)
       .then(() => {
         ctx.replyWithPhoto({ url: coinPi.info.normal.image },
-          // coinPi.info.limited.price
+          // ${coinPi.aff.promotion_link[3].promotion_link}
+          // ${coinPi.info.super.price}
         {
-          caption: `------ « تخفيض الاسعار 🎉 » ------\n Name\n الشحن : ${coinPi.info.normal.name}\n إسم المتجر : ${coinPi.info.normal.store}\n تقييم المتجر : ${coinPi.info.normal.storeRate}\n ----- | ✨ التخفيضات ✨ | -----\n السعر الاصلي :\n ${coinPi.info.normal.discountPrice}\n تخفيض العملات :\n ${coinPi.info.points.discount}\n تخفيض السوبر :\n ${coinPi.info.super.price}\n تخفيض العرض المحدود : ${coinPi.info.limited.price}`,
+          caption: `------ « تخفيض الاسعار 🎉 » ------\n ${coinPi.info.normal.name}\n الشحن : ${coinPi.info.normal.shipping}\n إسم المتجر : ${coinPi.info.normal.store}\n تقييم المتجر : ${coinPi.info.normal.storeRate}\n ----- | ✨ التخفيضات ✨ | -----\n السعر الاصلي(${coinPi.info.normal.discountPrice}) :\n ${coinPi.aff.promotion_link[0].promotion_link}\n تخفيض العملات(${coinPi.info.points.discount}) :\n ${coinPi.aff.promotion_link[3].promotion_link}\n تخفيض السوبر(${coinPi.info.super.price}) :\n ${coinPi.aff.promotion_link[2].promotion_link}\n تخفيض العرض المحدود (${coinPi.info.limited.price}) :\n ${coinPi.aff.promotion_link[1].promotion_link}`,
           parse_mode: "Markdown",
           ...Markup.inlineKeyboard([
             Markup.button.callback("زر عادي", "plain"),
