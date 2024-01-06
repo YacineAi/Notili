@@ -1,5 +1,4 @@
-const { Telegraf } = require('telegraf');
-const { Markup } = require('telegraf');
+const { Telegraf, Markup } = require('telegraf');
 const bot = new Telegraf(process.env.TELETOKEN);
 
 bot.start((ctx) => {
@@ -22,7 +21,7 @@ bot.on('text', (ctx) => {
       ]
     }
   });
-  ctx.replyWithPhoto("https://picsum.photos/200/300/?random", {
+  ctx.replyWithPhoto("https://ae01.alicdn.com/kf/S3e6e4d5a07894b9c840c15defc65c71cJ/Windbreaker-Men-Tactical-Jacket-Waterproof-Outdoor-Hooded-Coat-Sports-Military-European-Size-S-3xl-Field-Climbing.jpg", {
     caption: 'This is an example of an image with text and buttons.',
     reply_markup: {
       inline_keyboard: [
@@ -32,7 +31,18 @@ bot.on('text', (ctx) => {
         ],
       ],
     },
-  })
+  });
+
+  ctx.replyWithPhoto(
+		{ url: "https://picsum.photos/200/300/?random" },
+		{
+			caption: "Caption",
+			parse_mode: "Markdown",
+			...Markup.inlineKeyboard([
+				Markup.button.callback("Plain", "plain"),
+				Markup.button.url("Italic", "https://www.npmjs.com/"),
+			])
+		});
 });
 
 bot.launch({ webhook: { domain: process.env.RENDER_EXTERNAL_URL, port: process.env.PORT } })
