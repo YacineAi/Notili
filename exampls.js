@@ -35,3 +35,22 @@ ctx.replyWithPhoto(
             Markup.button.url("Italic", "https://www.npmjs.com/"),
         ])
 });
+
+
+
+ctx.reply('This message will be deleted in 5 seconds')
+  .then((message) => {
+    setTimeout(() => {
+      ctx.deleteMessage(message.message_id).then(() => {
+        ctx.replyWithPhoto({ url: "https://picsum.photos/200/300/?random" },
+        {
+          caption: "Caption",
+          parse_mode: "Markdown",
+          ...Markup.inlineKeyboard([
+            Markup.button.callback("Plain", "plain"),
+            Markup.button.url("Italic", "https://www.npmjs.com/"),
+          ])
+        });
+      })
+    }, 5000)
+  });

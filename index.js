@@ -17,7 +17,7 @@ bot.on('text', (ctx) => {
       ctx.deleteMessage(message.message_id).then(() => {
         ctx.replyWithPhoto({ url: "https://picsum.photos/200/300/?random" },
         {
-          caption: "Caption",
+          caption: "This is a simple URL: https://www.npmjs.com/\nThis is a URL that is displayed as a word: [npm](https://www.npmjs.com/package/telegraf)",
           parse_mode: "Markdown",
           ...Markup.inlineKeyboard([
             Markup.button.callback("Plain", "plain"),
