@@ -53,4 +53,22 @@ ctx.reply('This message will be deleted in 5 seconds')
         });
       })
     }, 5000)
-  });
+});
+
+
+ctx.reply('This message will be deleted in 5 seconds')
+  .then((message) => {
+    setTimeout(() => {
+      ctx.deleteMessage(message.message_id).then(() => {
+        ctx.replyWithPhoto({ url: "https://picsum.photos/200/300/?random" },
+        {
+          caption: "This is a simple URL: https://www.npmjs.com/\nThis is a URL that is displayed as a word: [npm](https://www.npmjs.com/package/telegraf)",
+          parse_mode: "Markdown",
+          ...Markup.inlineKeyboard([
+            Markup.button.callback("Plain", "plain"),
+            Markup.button.url("Italic", "https://www.npmjs.com/"),
+          ])
+        });
+      })
+    }, 5000)
+});

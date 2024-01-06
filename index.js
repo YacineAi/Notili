@@ -1,5 +1,7 @@
 const { Telegraf, Markup } = require('telegraf');
 const bot = new Telegraf(process.env.TELETOKEN);
+const affData = require("./afflinker.js");
+
 
 bot.start((ctx) => {
   ctx.reply('Welcome to your Telegram bot! Send me a message.');
@@ -11,10 +13,14 @@ bot.help((ctx) => {
 
 bot.on('text', (ctx) => {
   console.log(ctx.message.from);
-  ctx.reply('This message will be deleted in 5 seconds')
+  // ctx.message.text
+  ctx.reply('Searching...')
   .then((message) => {
-    setTimeout(() => {
-      ctx.deleteMessage(message.message_id).then(() => {
+    affData.getData(ctx.message.text)
+    .then((coinPi) => {
+      console.log("coinPi : ", coinPi)
+      ctx.deleteMessage(message.message_id)
+      .then(() => {
         ctx.replyWithPhoto({ url: "https://picsum.photos/200/300/?random" },
         {
           caption: "This is a simple URL: https://www.npmjs.com/\nThis is a URL that is displayed as a word: [npm](https://www.npmjs.com/package/telegraf)",
@@ -25,7 +31,8 @@ bot.on('text', (ctx) => {
           ])
         });
       })
-    }, 5000)
+
+    });
   });
 });
 
