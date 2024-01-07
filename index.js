@@ -29,25 +29,25 @@ bot.on('text', (ctx) => {
           caption: `
 <b>-----------✨ تخفيض الاسعار ✨-----------</b>
 
-${coinPi.info.normal.name}
+${coinPi.info.normal.name}.
 
-<b>الشحن</b>: ${coinPi.info.normal.shipping}
-<b>إسم المتجر</b>: ${coinPi.info.normal.store}
-<b>تقييم المتجر</b>: ${coinPi.info.normal.storeRate}
+<b>الشحن</b> : ${coinPi.info.normal.shipping}.
+<b>إسم المتجر</b> : ${coinPi.info.normal.store}.
+<b>تقييم المتجر</b> : ${coinPi.info.normal.storeRate}.
 
 <b>----------- |✨ التخفيضات ✨| -----------</b>
 
 <b>السعر الاصلي</b> : (${coinPi.info.normal.discountPrice})
-[${coinPi.aff.normal}]
+${coinPi.aff.normal}
 
 <b>تخفيض العملات</b> : (${coinPi.info.points.discount})
-[${coinPi.aff.points}]
+${coinPi.aff.points}
 
 <b>تخفيض السوبر</b> : (${coinPi.info.super.price})
-[${coinPi.aff.super}]
+${coinPi.aff.super}
 
 <b>تخفيض العرض المحدود</b> : (${coinPi.info.limited.price})
-[${coinPi.aff.limited}]`,
+${coinPi.aff.limited}`,
           parse_mode: "HTML",
           ...Markup.inlineKeyboard([
             Markup.button.callback("زر عادي", "plain"),
