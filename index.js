@@ -27,7 +27,7 @@ bot.on('text', (ctx) => {
         {
           
           caption: `
-<b>>-----------« تخفيض الاسعار 🎉 »>-----------</b>
+<b>-----------<h1> تخفيض الاسعار </h1>-----------</b>
 ${coinPi.info.normal.name}
 <b>الشحن</b>: ${coinPi.info.normal.shipping}
 <b>إسم المتجر</b>: ${coinPi.info.normal.store}
