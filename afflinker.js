@@ -2,7 +2,7 @@ const crypto = require("crypto");
 const axios = require('axios');
 
 const API_URL = "https://api-sg.aliexpress.com/sync";
-const API_SECRET = "OaLzXXkqmPx36N3HwuOlnURxalPpcSRG";
+const API_SECRET = process.env.SECRET;
 
 const hash = (method, s, format) => {
   const sum = crypto.createHash(method);
