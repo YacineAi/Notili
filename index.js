@@ -27,20 +27,27 @@ bot.on('text', (ctx) => {
         {
           
           caption: `
-<b>-----------<h1> تخفيض الاسعار </h1>-----------</b>
+<b>-----------✨ تخفيض الاسعار ✨-----------</b>
+
 ${coinPi.info.normal.name}
+
 <b>الشحن</b>: ${coinPi.info.normal.shipping}
 <b>إسم المتجر</b>: ${coinPi.info.normal.store}
 <b>تقييم المتجر</b>: ${coinPi.info.normal.storeRate}
-<b>----------- | ✨ التخفيضات ✨ | -----------</b>
-<b>السعر الاصلي</b>(${coinPi.info.normal.discountPrice}) :
-<a href="${coinPi.aff.normal}">اضغط هنا</a>
-<b>تخفيض العملات</b>(${coinPi.info.points.discount}) :
-<a href="${coinPi.aff.points}">اضغط هنا</a>
-<b>تخفيض السوبر</b>(${coinPi.info.super.price}) :
-<a href="${coinPi.aff.super}">اضغط هنا</a>
-<b>تخفيض العرض المحدود</b> (${coinPi.info.limited.price}) :
-<a href="${coinPi.aff.limited}">اضغط هنا</a>`,
+
+<b>----------- |✨ التخفيضات ✨| -----------</b>
+
+<b>السعر الاصلي</b> : (${coinPi.info.normal.discountPrice})
+[${coinPi.aff.normal}]
+
+<b>تخفيض العملات</b> : (${coinPi.info.points.discount})
+[${coinPi.aff.points}]
+
+<b>تخفيض السوبر</b> : (${coinPi.info.super.price})
+[${coinPi.aff.super}]
+
+<b>تخفيض العرض المحدود</b> : (${coinPi.info.limited.price})
+[${coinPi.aff.limited}]`,
           parse_mode: "HTML",
           ...Markup.inlineKeyboard([
             Markup.button.callback("زر عادي", "plain"),
