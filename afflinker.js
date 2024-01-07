@@ -2,7 +2,7 @@ const crypto = require("crypto");
 const axios = require('axios');
 
 const API_URL = "https://api-sg.aliexpress.com/sync";
-const API_SECRET = process.env.SECRET;
+const API_SECRET = "OaLzXXkqmPx36N3HwuOlnURxalPpcSRG";
 
 const hash = (method, s, format) => {
   const sum = crypto.createHash(method);
@@ -51,19 +51,27 @@ const getData = async (id) => {
         sign,
       };
       try {
-        //const res = await axios.post(API_URL, new URLSearchParams(allParams));
-        const requests = [
-            axios.post(API_URL, new URLSearchParams(allParams)),
-            axios.get(`https://coinzy-u0g3.onrender.com/fetch?id=${id}`),
-        ];
-        const responses = await Promise.all(requests);
-        // res.data.aliexpress_affiliate_link_generate_response.resp_result.result.promotion_links.promotion_link[0].promotion_link
-        //console.log(res.data.aliexpress_affiliate_link_generate_response.resp_result.result.promotion_links);
+        const responses = await Promise.all([ axios.post(API_URL, new URLSearchParams(allParams)), axios.get(`https://coinzy-u0g3.onrender.com/fetch?id=${id}`)]);
         const affRes = {};
         responses.forEach((response, index) => {
             switch (index) {
                 case 0: // aff 
-                affRes['aff'] = response.data.aliexpress_affiliate_link_generate_response.resp_result.result.promotion_links;
+                const mappedData = response.data.aliexpress_affiliate_link_generate_response.resp_result.result.promotion_links.promotion_link.reduce((result, item) => {
+                    const sourceValue = item.source_value;
+                    let key = 'normal';
+                    if (sourceValue) {
+                        if (sourceValue.includes('sourceType=561')) {
+                        key = 'limited';
+                      } else if (sourceValue.includes('sourceType=562')) {
+                        key = 'super';
+                      } else if (sourceValue.includes('sourceType=620')) {
+                        key = 'points';
+                      }
+                    }
+                    result[key] = item.promotion_link;
+                    return result;
+                  }, {});
+                affRes['aff'] = mappedData;
                 break;
                 case 1: // info
                 affRes['info'] = response.data;
